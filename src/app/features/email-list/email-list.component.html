@@ -1,0 +1,67 @@
+<mat-card class="email-list">
+
+  <mat-form-field appearance="outline" class="date-range" >
+    <img (click)="picker.open()" class="calender-icon" src="assets/images/icon_calender.svg" alt="Search icon" />
+
+    <mat-date-range-input class="date-range-input" [formGroup]="dateRange" [rangePicker]="picker" [dateFilter]="applyPeriodFilter()">
+      <input matStartDate formControlName="startDate" placeholder="Start date">
+      <input matEndDate formControlName="endDate" placeholder="End date">
+    </mat-date-range-input>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+
+    <img (click)="applyPeriodFilter()" class="date-search-icon" src="assets/images/icon_search.svg" alt="Search icon"/>
+  </mat-form-field>
+
+  <div *ngIf="!loading"  className="results-counter">
+    <span>
+      <strong>Results: <span className="big-text">{{dataSource.filteredData.length}}</span> mail(s)</strong>
+    </span>
+  </div>
+
+  <div *ngIf="dataSource.filteredData.length === 0" class="app-logo">
+    <img src="assets/images/logo.png" alt="Logo" />
+  </div>
+
+  <div *ngIf="!loading"  [ngClass]="{'hide-table': dataSource.filteredData.length > 0}"  class="wrap-table">
+
+    <table mat-table [dataSource]="dataSource" matSort>
+        
+      <ng-container matColumnDef="from">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>From</th>
+        <td class="table-from-row" mat-cell *matCellDef="let element"> 
+          <span>{{element.from}}</span>
+          <img src="assets/images/icon_mail_sp.svg" alt="Logo" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="to">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>To</th>
+        <td class="table-to-row" mat-cell *matCellDef="let element"> 
+          <span class="text">{{element.to}} </span>
+          <span class="badge" *ngIf="element.to.length>1">+{{element.to.length-1}}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="subject">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Subject</th>
+        <td class="table-subject-row" mat-cell *matCellDef="let element"> 
+          <span class="text">{{element.subject}}</span>
+          <img class="attachment" *ngIf="element.attachment.length>0" src="assets/images/icon_clip.svg" alt="Logo" />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+        <td  class="table-date-row" mat-cell *matCellDef="let element"> 
+          {{element.date | date: formatDate(element.date) }}
+          <img class="arrow-right" src="assets/images/icon_arrow02.svg" alt="Logo" /> 
+        </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+    </table>        
+  </div>
+
+</mat-card>

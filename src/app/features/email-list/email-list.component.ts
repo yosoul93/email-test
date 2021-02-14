@@ -1,0 +1,83 @@
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { MatTableDataSource } from '@angular/material/table';
+import { EmailListService } from './email-list.service';
+import { EmailList } from 'src/app/shared/models/movie.interface';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
+
+@Component({
+  selector: 'app-email-list',
+  templateUrl: './email-list.component.html',
+  styleUrls: ['./email-list.component.scss']
+})
+export class EmailListComponent implements OnInit, OnDestroy {
+
+  loading: boolean = true;
+  displayedColumns: string[] = ['from', 'to', 'subject', 'date'];
+  dataSource!: MatTableDataSource<EmailList>;
+
+  dateRange: FormGroup = new FormGroup({
+    startDate: new FormControl( new Date("Sun Oct 27 2020")),
+    endDate: new FormControl(new Date()),
+  });
+
+  @ViewChild(MatSort) sort: MatSort;
+
+  private _unsubscribeAll: Subject<any>;
+
+  constructor(
+    private _emailListService: EmailListService
+  ) {
+    this._unsubscribeAll = new Subject();
+    
+  }
+
+  ngOnInit(): void {
+    this._emailListService.getEmailList()
+      .subscribe((res: EmailList[]) => {
+        takeUntil(this._unsubscribeAll),
+        this.dataSource = new MatTableDataSource<EmailList>(res);
+        // subscribe to filter data by date range
+        this.dataSource.filterPredicate = (data) => {
+          let dateRange = JSON.parse(JSON.stringify(this.dateRange.value));
+          // console.log("dateRange", dateRange)
+          if (dateRange.startDate && dateRange.endDate) {
+            return data.date >= dateRange.startDate && data.date <= dateRange.endDate;
+          }
+          return true;
+        }
+        // sort data
+        setTimeout(() => this.dataSource.sort = this.sort );
+        this.loading = false;
+      });
+  }
+
+  applyPeriodFilter(): any {
+    if(this.dataSource){
+      this.dataSource.filter = ''+Math.random();
+    }
+  }
+  
+  toISO(date): string {
+    return new Date(date).toISOString().slice(0, -1).split('T')[0].toString().replace(/-/g, "/");
+  }
+
+  formatDate(date): string {
+    const today: string = this.toISO(new Date());
+    if (today === this.toISO(date)) {
+      return 'h:mm';
+    }
+    if (new Date(today).getMonth() === new Date(date).getMonth()) {
+      return 'MMM d'
+    }
+    return 'yyyy/MM/dd'
+  }
+
+  ngOnDestroy(): void{
+    this._unsubscribeAll.next();
+    this._unsubscribeAll.complete();
+  }
+
+}

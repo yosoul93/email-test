@@ -1,0 +1,215 @@
+@import "src/app/shared/scss/hennge";
+
+.email-list{
+  
+  .date-range {
+    width: 300px;
+
+    .calender-icon {
+      position: relative;
+      top: -4px;
+      height: 20px;
+      width: 20px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .date-range-input {
+      margin-left: 30px;
+      margin-top: -25px;
+    }
+
+    .date-search-icon {
+      position: absolute;
+      right: -12px;
+      top: -10px;
+      width: 21px;
+      height: 21px;
+      padding: 18px;
+      background: #f5f5f5;
+      border: 0.1px solid rgba(0, 0, 0, 0.12);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;  
+      cursor: pointer;
+      outline: none;
+    }
+  }
+
+  .results-counter {
+    width: 100%;
+    color: #666;
+    padding: 0 0 10px 0;
+  }
+
+  .app-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 250px);
+  }
+
+  .wrap-table {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-top: 20px;
+
+    table {
+      width: 100%;
+      table-layout: fixed;
+      font-size: 17px;
+
+      @include media-breakpoint(('xs', 'sm')) {
+        display: grid;
+        ::ng-deep {
+          .mat-sort-header-container{
+            border-right: 1px solid;
+            padding-right: 10px;
+          }
+          .mat-column-date {
+            .mat-sort-header-container {
+             border: none;
+            }
+          }
+
+          .mat-row {
+            display: table;
+            width: 100%;        
+            border-bottom-width: 1px;
+            border-bottom-style: solid;
+            border-bottom-color: rgba(0, 0, 0, 0.12);
+
+            .table-from-row {
+              span {
+                position: relative;
+                top: 15px;
+              }
+              img {
+                position: relative;
+                display: block !important;
+                width: 30px;
+                height: 30px;
+                float: left;
+                top: 20px;
+              }
+            }
+
+            .table-to-row {
+              .text {
+                position: relative;
+                left: 30px;
+                top: 8px;
+              }
+              .badge {
+                position: relative;
+                top: 30px;
+                right: 15px;
+                float: right;
+                margin: 0;
+              }
+            }
+
+            .table-subject-row {
+              .text {
+                position: relative;
+                top: 10px;
+                left: 15px;
+              }
+              .attachment {
+                position: relative;
+                top: -20px;
+                right: 110px;
+              }
+            }
+
+            .table-date-row {
+              position: relative;
+              float: right;
+              top: -40px;
+              padding-right: 10px;
+              .arrow-right {
+                display: block !important;
+                width: 10px;
+                height: 10px;
+                float: right;
+                margin-top: 3px;
+                margin-left: 5px;
+              }
+            }
+          }
+          .mat-cell {
+            display: table-row;
+            border: none;
+          }
+          
+        }
+      }
+
+      ::ng-deep thead {
+        background:#f5f5f5;
+        th.mat-header-cell {
+          font-weight: 700;
+          font-size: 15px;
+        }
+      }
+
+      .table-from-row {
+        img {
+          display: none;
+        }
+      }
+
+      .table-to-row {
+        .badge {
+          background-color: #888;
+          color: white;
+          padding: 2px;
+          border-radius: 2px;
+          float: right;
+          margin-right: 20px;
+        }
+      }
+      .table-subject-row {
+        .attachment {
+          width: 17px;
+          height: 17px;
+          float: right;
+          margin-right: 10px;
+        }
+      }
+
+      .table-date-row {
+        .arrow-right {
+          display: none;
+        }
+      }
+
+      .mat-cell {
+        font-size: 17px;
+      }
+
+      .mat-header-cell {
+        text-align: left;
+        padding: 0px 10px;
+      }
+
+      .mat-row:hover > .mat-cell {
+        background: #F5F5F5;
+        color: blue;
+      }
+
+
+      th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: pointer;
+      }
+
+      .hide-table {
+        display: none;
+        overflow: hidden;
+      }
+    }
+  }
+}
