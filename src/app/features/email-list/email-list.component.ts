@@ -7,11 +7,13 @@ import { Email } from 'src/app/shared/models/email.interface';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-email-list',
   templateUrl: './email-list.component.html',
-  styleUrls: ['./email-list.component.scss']
+  styleUrls: ['./email-list.component.scss'],
+  animations: Animations
 })
 export class EmailListComponent implements OnInit, OnDestroy {
 
@@ -68,8 +70,10 @@ export class EmailListComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy(): void{
-    this._unsubscribeAll.next();
-    this._unsubscribeAll.complete();
+    if(this._unsubscribeAll){
+      this._unsubscribeAll.next();
+      this._unsubscribeAll.complete();
+    }
   }
 
 }

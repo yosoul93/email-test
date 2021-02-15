@@ -4,15 +4,16 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Email } from 'src/app/shared/models/email.interface';
 import { EmailListService } from '../email-list.service';
+import { Animations } from 'src/app/shared/animations';
 
 @Component({
   selector: 'app-email-detail',
   templateUrl: './email-detail.component.html',
-  styleUrls: ['./email-detail.component.scss']
+  styleUrls: ['./email-detail.component.scss'],
+  animations: Animations
 })
 export class EmailDetailComponent implements OnInit {
-  
-  animationDirection: string = 'left';
+
   emailDetail: Email;
   
   private _unsubscribeAll: Subject<any>;
@@ -34,8 +35,10 @@ export class EmailDetailComponent implements OnInit {
   }
 
   ngOnDestroy(): void{
-    this._unsubscribeAll.next();
-    this._unsubscribeAll.complete();
+    if(this._unsubscribeAll){
+      this._unsubscribeAll.next();
+      this._unsubscribeAll.complete();
+    }
   }
 
 }
