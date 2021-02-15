@@ -10,20 +10,15 @@ import { NavigationEnd, Router } from '@angular/router';
 export class EmailListService {
 
   public isPageReload: boolean = false;
-  public previousNavigationUrl: string = '';
-  public currentNavigationUrl: string = '/movies';
 
   constructor(
     private router: Router,
     private _httpClient: HttpClient
   ) { 
      // detect when the user reload the page
-    // get previous and current navigation url
     this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        this.previousNavigationUrl = this.currentNavigationUrl;
-        this.currentNavigationUrl = event.url;
         if (event.id === 1 && event.url === event.urlAfterRedirects) {
           this.isPageReload = true;
         } else {

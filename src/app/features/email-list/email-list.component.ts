@@ -46,7 +46,6 @@ export class EmailListComponent implements OnInit, OnDestroy {
         // subscribe to filter data by date range
         this.dataSource.filterPredicate = (data) => {
           let dateRange = JSON.parse(JSON.stringify(this.dateRange.value));
-          // console.log("dateRange", dateRange)
           if (dateRange.startDate && dateRange.endDate) {
             return data.date >= dateRange.startDate && data.date <= dateRange.endDate;
           }
