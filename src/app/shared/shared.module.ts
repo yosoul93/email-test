@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-// import { MatIconModule } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { RouterModule } from '@angular/router';
@@ -28,7 +28,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatInputModule,
     MatTableModule,
     MatSortModule,
-    // MatIconModule,
+    MatIconModule,
     MatCardModule,
     MatButtonModule,
   ],
@@ -45,7 +45,7 @@ import {MatSortModule} from '@angular/material/sort';
     MatInputModule,
     MatTableModule,
     MatSortModule,
-    // MatIconModule,
+    MatIconModule,
     MatCardModule,
     MatButtonModule,
   ]

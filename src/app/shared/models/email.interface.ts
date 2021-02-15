@@ -1,4 +1,4 @@
-export interface EmailList {
+export interface Email {
   id: string;
   from: string;
   to: string[];

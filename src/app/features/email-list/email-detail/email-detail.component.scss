@@ -1,0 +1,48 @@
+
+.email-detail {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+
+  .back-arrow-btn {
+    position: relative;
+    bottom: 30px;
+    right: 15px;
+
+    mat-icon {
+      font-size: 32px;
+    }
+  }
+
+  .mail-header {
+    padding-bottom: 16px;
+    border-bottom: 1px solid;
+
+    .subject {
+      font-size: 17px;
+      font-weight: 600;
+    }
+  }
+
+.mail-content {
+  padding: 24px 0;
+  
+  .info {
+    padding-bottom: 16px;
+
+    .details {
+      padding-top: 8px;
+
+        .title {
+          font-weight: 600;
+          margin-right: 6px;
+        }
+      }
+    }
+
+    .body {
+      margin-top: 20px;
+    }
+  }
+}

@@ -28,7 +28,7 @@
         
       <ng-container matColumnDef="from">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>From</th>
-        <td class="table-from-row" mat-cell *matCellDef="let element"> 
+        <td (click)="goToDetail(element.id)" class="table-from-row" mat-cell *matCellDef="let element"> 
           <span>{{element.from}}</span>
           <img src="assets/images/icon_mail_sp.svg" alt="Logo" />
         </td>
@@ -36,7 +36,7 @@
 
       <ng-container matColumnDef="to">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>To</th>
-        <td class="table-to-row" mat-cell *matCellDef="let element"> 
+        <td (click)="goToDetail(element.id)" class="table-to-row" mat-cell *matCellDef="let element"> 
           <span class="text">{{element.to}} </span>
           <span class="badge" *ngIf="element.to.length>1">+{{element.to.length-1}}</span>
         </td>
@@ -44,7 +44,7 @@
 
       <ng-container matColumnDef="subject">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Subject</th>
-        <td class="table-subject-row" mat-cell *matCellDef="let element"> 
+        <td (click)="goToDetail(element.id)" class="table-subject-row" mat-cell *matCellDef="let element"> 
           <span class="text">{{element.subject}}</span>
           <img class="attachment" *ngIf="element.attachment.length>0" src="assets/images/icon_clip.svg" alt="Logo" />
         </td>
@@ -52,8 +52,8 @@
 
       <ng-container matColumnDef="date">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-        <td  class="table-date-row" mat-cell *matCellDef="let element"> 
-          {{element.date | date: formatDate(element.date) }}
+        <td (click)="goToDetail(element.id)"  class="table-date-row" mat-cell *matCellDef="let element"> 
+          {{element.date | date: _emailListService.formatDate(element.date) }}
           <img class="arrow-right" src="assets/images/icon_arrow02.svg" alt="Logo" /> 
         </td>
       </ng-container>

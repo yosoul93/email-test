@@ -1,1 +1,46 @@
-<p>email-detail works!</p>
+<div class="email-detail">
+
+  <button class="back-arrow-btn" mat-icon-button [routerLink]="['/email-list']">
+      <mat-icon class="secondary-text">arrow_back</mat-icon>
+  </button>
+
+  <div class="mail-header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="subject">{{emailDetail.subject}}</div>
+  </div>
+
+  <div class="mail-content">
+
+    <div class="info" fxLayout="row" fxLayoutAlign="space-between start">
+
+      <div fxFlex fxLayout="column" fxLayoutAlign="start start">
+
+        <div class="details" fxLayout="row" fxLayoutAlign="start start">
+
+            <div fxLayout="column">
+
+              <div>
+                <span class="title">From:</span>  
+                <span class="detail">{{emailDetail.from}}</span>
+              </div>
+
+              <div>
+                <span class="title">To:</span> 
+                <span class="detail">{{emailDetail.to}}</span>
+              </div>
+
+              <div>
+                <span class="title">Date:</span> 
+                <span class="detail">{{emailDetail.date | date: _emailListService.formatDate(emailDetail.date)}}</span>
+              </div>
+                
+            </div>
+        </div>
+      </div>
+
+      <div class="body" [innerHTML]="emailDetail.body"></div>
+
+    </div>
+
+  </div>
+
+</div>
