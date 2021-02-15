@@ -53,6 +53,9 @@
     overflow-y: auto;
     overflow-x: hidden;
     margin-top: 20px;
+    @include media-breakpoint(('xs')) {
+      overflow-x: auto;
+    }
 
     table {
       width: 100%;
@@ -61,6 +64,7 @@
 
       @include media-breakpoint(('xs', 'sm')) {
         display: grid;
+        min-width: 490px;
         ::ng-deep {
           .mat-sort-header-container{
             border-right: 1px solid;
@@ -84,7 +88,7 @@
                 position: relative;
                 top: 15px;
               }
-              img {
+              .img {
                 position: relative;
                 display: block !important;
                 width: 30px;
@@ -154,7 +158,7 @@
       }
 
       .table-from-row {
-        img {
+        .img {
           display: none;
         }
       }
@@ -181,6 +185,16 @@
       .table-date-row {
         .arrow-right {
           display: none;
+        }
+      }
+
+      .table-row-colum {
+        display: flex;
+        .text {
+          width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
 

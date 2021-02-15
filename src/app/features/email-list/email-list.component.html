@@ -30,32 +30,41 @@
         <ng-container matColumnDef="from">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>From</th>
           <td (click)="goToDetail(element.id)" class="table-from-row" mat-cell *matCellDef="let element"> 
-            <span>{{element.from}}</span>
-            <img src="assets/images/icon_mail_sp.svg" alt="Logo" />
+            <div class="table-row-colum">
+              <img class="img" src="assets/images/icon_mail_sp.svg" alt="Logo" />
+              <span class="text">{{element.from}}</span>
+             
+            </div>
           </td>
         </ng-container>
   
         <ng-container matColumnDef="to">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>To</th>
           <td (click)="goToDetail(element.id)" class="table-to-row" mat-cell *matCellDef="let element"> 
-            <span class="text">{{element.to}} </span>
-            <span class="badge" *ngIf="element.to.length>1">+{{element.to.length-1}}</span>
+            <div class="table-row-colum">
+              <span class="text">{{element.to}} </span>
+              <span class="badge" *ngIf="element.to.length>1">+{{element.to.length-1}}</span>
+            </div>
           </td>
         </ng-container>
   
         <ng-container matColumnDef="subject">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Subject</th>
           <td (click)="goToDetail(element.id)" class="table-subject-row" mat-cell *matCellDef="let element"> 
-            <span class="text">{{element.subject}}</span>
-            <img class="attachment" *ngIf="element.attachment.length>0" src="assets/images/icon_clip.svg" alt="Logo" />
+            <div class="table-row-colum">
+              <span class="text">{{element.subject}}</span>
+              <img class="attachment" *ngIf="element.attachment.length>0" src="assets/images/icon_clip.svg" alt="Logo" />
+            </div>
           </td>
         </ng-container>
   
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
           <td (click)="goToDetail(element.id)"  class="table-date-row" mat-cell *matCellDef="let element"> 
-            {{element.date | date: _emailListService.formatDate(element.date) }}
+           <div class="table-row-colum">
+             <span class="text">{{element.date | date: _emailListService.formatDate(element.date) }}</span>
             <img class="arrow-right" src="assets/images/icon_arrow02.svg" alt="Logo" /> 
+           </div>
           </td>
         </ng-container>
         
