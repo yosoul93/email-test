@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, filter, map, tap } from 'rxjs/operators';
-import { Email } from 'src/app/shared/models/email.interface';
+import { Email } from 'src/app/shared/models/email.type';
 import { NavigationEnd, Router } from '@angular/router';
 
 @Injectable()

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Email } from 'src/app/shared/models/email.interface';
+import { Email } from 'src/app/shared/models/email.type';
 import { EmailListService } from '../email-list.service';
 import { Animations } from 'src/app/shared/animations';
 

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hennge": {
+    "email-test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/hennge",
+            "outputPath": "dist/email-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "hennge:build"
+            "browserTarget": "email-test:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "hennge:build:production"
+              "browserTarget": "email-test:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hennge:build"
+            "browserTarget": "email-test:build"
           }
         },
         "test": {
@@ -113,16 +113,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "hennge:serve"
+            "devServerTarget": "email-test:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "hennge:serve:production"
+              "devServerTarget": "email-test:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "hennge"
+  "defaultProject": "email-test"
 }

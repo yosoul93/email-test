@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { EmailListService } from './email-list.service';
-import { Email } from 'src/app/shared/models/email.interface';
+import { Email } from 'src/app/shared/models/email.type';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
