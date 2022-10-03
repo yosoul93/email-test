@@ -14,7 +14,7 @@ import { Animations } from 'src/app/shared/animations';
 })
 export class EmailDetailComponent implements OnInit {
 
-  emailDetail: Email;
+  public emailDetail: Email;
   
   private _unsubscribeAll: Subject<any>;
 

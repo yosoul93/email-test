@@ -17,9 +17,9 @@ import { Animations } from 'src/app/shared/animations';
 })
 export class EmailListComponent implements OnInit, OnDestroy {
 
-  loading: boolean = true;
-  displayedColumns: string[] = ['from', 'to', 'subject', 'date'];
-  dataSource!: MatTableDataSource<Email>;
+  public loading: boolean = true;
+  public displayedColumns: string[] = ['from', 'to', 'subject', 'date'];
+  public dataSource!: MatTableDataSource<Email>;
 
   dateRange: FormGroup = new FormGroup({
     startDate: new FormControl( new Date("Sun Oct 27 2020")),
